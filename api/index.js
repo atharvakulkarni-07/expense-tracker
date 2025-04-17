@@ -11,7 +11,13 @@ console.log("🔑 OpenRouter API Key:", process.env.OPENROUTER_API_KEY);
 const app = express();
 
 // Use CORS for allowing cross-origin requests
-app.use(cors());
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000'; // Default to localhost for development
+
+app.use(cors({
+    origin: frontendUrl,
+    credentials: true
+}));
+
 
 // Enable JSON body parsing for POST requests
 app.use(express.json());
@@ -96,6 +102,9 @@ app.delete("/api/transaction/:id", async (req, res) => {
 });
 
 // Listen for incoming requests
-app.listen(3001, () => {
-    console.log(`App is listening on http://localhost:3001`);
+const PORT = process.env.PORT || 3001;  // Get port from environment or default to 3001
+
+app.listen(PORT, () => {
+    console.log(`App is listening on port ${PORT}`);
 });
+
