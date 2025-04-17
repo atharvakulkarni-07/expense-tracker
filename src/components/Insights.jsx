@@ -10,7 +10,8 @@ const Insights = ({ transactions }) => {
   const generateInsights = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3001/api/insights", {
+      const url = import.meta.env.VITE_REACT_APP_API_URL + "/api/insights";
+      const res = await axios.post(url , {
         transactions,
       });
 
