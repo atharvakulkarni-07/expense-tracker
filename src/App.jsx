@@ -31,7 +31,7 @@ const [tempInitialBalance, setTempInitialBalance] = useState("");
   }, []);
 
   async function getTransactions(){
-    const url = import.meta.env.VITE_REACT_APP_API_URL + "/transaction";
+    const url = `${import.meta.env.VITE_REACT_APP_API_URL}/transaction`;
     const response = await fetch(url);
     return await response.json();
     // the response is returned in json format;
@@ -41,7 +41,7 @@ const [tempInitialBalance, setTempInitialBalance] = useState("");
   function addNewTransaction(event) {
     event.preventDefault();
     const price = parseFloat(name.split(' ')[0]);
-    const urlBase = import.meta.env.VITE_REACT_APP_API_URL + "/transaction";
+    const urlBase = `${import.meta.env.VITE_REACT_APP_API_URL}/transaction`;
   
     const body = {
       price,
@@ -86,7 +86,7 @@ const [tempInitialBalance, setTempInitialBalance] = useState("");
   
 // Function to delete a transaction
   function deleteTransaction(id) {
-    const url = import.meta.env.VITE_REACT_APP_API_URL + `/transaction/${id}`;
+    const url = `${import.meta.env.VITE_REACT_APP_API_URL}/transaction/${id}`;
     fetch(url, {
       method: "DELETE",
     }).then((response) => {
