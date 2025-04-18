@@ -30,12 +30,24 @@ const [tempInitialBalance, setTempInitialBalance] = useState("");
     getTransactions().then(setTransactions);
   }, []);
 
-  async function getTransactions(){
+  async function getTransactions() {
     const url = `${import.meta.env.VITE_REACT_APP_API_URL}/transaction`;
-    const response = await fetch(url);
-    return await response.json();
-    // the response is returned in json format;
+  
+    try {
+      const response = await fetch(url);
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error ${response.status}: ${errorText}`);
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error("Failed to fetch transactions:", error.message);
+      return [];
+    }
   }
+  
 
   // this takes care of adding as well as updating transactions
   function addNewTransaction(event) {
