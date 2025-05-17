@@ -34,7 +34,7 @@ const Insights = ({ transactions }) => {
   return (
     <div className="p-6 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl shadow-xl mt-6 max-w-3xl mx-auto border border-gray-200">
       <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
-        🔍 AI-Powered Financial Insights (Comming Soon...)
+        🔍 AI-Powered Financial Insights (Coming Soon...)
       </h2>
 
       <div className="flex justify-center">
