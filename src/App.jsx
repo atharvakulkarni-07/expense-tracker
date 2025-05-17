@@ -22,9 +22,6 @@ const [tempInitialBalance, setTempInitialBalance] = useState("");
 
 
 
-
-  
-
   // using the useEffect Hook
   useEffect(() => {
     getTransactions().then(setTransactions);
